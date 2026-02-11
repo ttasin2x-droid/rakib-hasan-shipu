@@ -37,4 +37,4 @@ This static website is production-ready. Simply push your code to a repository a
 * **Website:** [scout-world.com](https://www.scout-world.com/)
 
 ---
-*Designed & Developed by [Rakib Hasan Shipu]*
+*Designed & Developed by [Tanvir Tasin]*
