@@ -41,53 +41,11 @@
 
         /* --- KEYFRAMES FOR ANIMATIONS --- */
         
-        /* 1. Page Load Fade In Up */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 2. Pop In Animation for Title */
-        @keyframes popIn {
-            0% {
-                opacity: 0;
-                transform: translateX(-50%) scale(0.8);
-            }
-            70% {
-                transform: translateX(-50%) scale(1.05);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(-50%) scale(1);
-            }
-        }
-
-        /* 3. Slide In Left for Timeline items */
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* 4. Continuous Pulse Animation for Icons */
-        @keyframes pulseGlow {
-            0% { filter: drop-shadow(0 0 2px rgba(142, 36, 170, 0.4)); }
-            50% { filter: drop-shadow(0 0 8px rgba(142, 36, 170, 0.8)); transform: scale(1.05); }
-            100% { filter: drop-shadow(0 0 2px rgba(142, 36, 170, 0.4)); }
-        }
-
-        /* --- END KEYFRAMES --- */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes popIn { 0% { opacity: 0; transform: translateX(-50%) scale(0.8); } 70% { transform: translateX(-50%) scale(1.05); } 100% { opacity: 1; transform: translateX(-50%) scale(1); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulseGlow { 0% { filter: drop-shadow(0 0 2px rgba(142, 36, 170, 0.4)); } 50% { filter: drop-shadow(0 0 8px rgba(142, 36, 170, 0.8)); transform: scale(1.05); } 100% { filter: drop-shadow(0 0 2px rgba(142, 36, 170, 0.4)); } }
+        @keyframes bgZoom { from { background-size: 100% auto; } to { background-size: 110% auto; } }
 
         .portfolio-card {
             background-color: #fff;
@@ -97,7 +55,6 @@
             box-shadow: 0 20px 50px rgba(100, 50, 150, 0.1);
             overflow: hidden;
             position: relative;
-            /* Apply Fade In Up Animation to the whole card */
             animation: fadeInUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
         }
 
@@ -105,22 +62,15 @@
         .header-illustration {
             width: 100%;
             height: 350px; 
-            /* ডিজাইনের জন্য লোকাল গিটহাব ফাইল */
+            /* GITHUB PATH (Local File) */
             background-image: url('photos/hero-sec.jpg'); 
             background-size: cover;
             background-position: center;
             position: relative; 
             padding: 40px;
-            /* Slow zoom on background image on load */
             animation: bgZoom 10s linear infinite alternate;
         }
 
-        @keyframes bgZoom {
-            from { background-size: 100% auto; }
-            to { background-size: 110% auto; }
-        }
-
-        /* --- TITLE SECTION --- */
         .portfolio-title-box {
             position: absolute; 
             bottom: 30px; 
@@ -130,52 +80,19 @@
             width: auto;
             z-index: 1;
             white-space: nowrap; 
-            /* Apply Pop In Animation */
             animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.5s;
             opacity: 0;
         }
 
-        .portfolio-title-box h1 {
-            font-size: 60px; 
-            font-weight: 800;
-            color: #ffffff; 
-            line-height: 1;
-            margin-bottom: -8px; 
-            text-shadow: 0 2px 10px rgba(0,0,0,0.4); 
-            transition: text-shadow 0.3s ease;
-        }
+        .portfolio-title-box h1 { font-size: 60px; font-weight: 800; color: #ffffff; line-height: 1; margin-bottom: -8px; text-shadow: 0 2px 10px rgba(0,0,0,0.4); transition: text-shadow 0.3s ease; }
+        .portfolio-title-box:hover h1 { text-shadow: 0 5px 20px rgba(255, 255, 255, 0.5); }
+        .portfolio-title-box h1 span { color: #31A8FF; }
 
-        .portfolio-title-box:hover h1 {
-            text-shadow: 0 5px 20px rgba(255, 255, 255, 0.5); /* Glowing text on hover */
-        }
+        .subtitle-row { display: flex; justify-content: center; align-items: center; gap: 20px; }
+        .subtitle-row span:first-child { font-family: 'Caveat', cursive; font-size: 26px; color: #f0f0f0; text-shadow: 0 1px 5px rgba(0,0,0,0.4); }
+        .subtitle-row span:last-child { font-weight: 800; font-size: 22px; color: #ffffff; transform: rotate(-10deg); text-shadow: 0 1px 5px rgba(0,0,0,0.4); }
 
-        .portfolio-title-box h1 span {
-            color: #31A8FF; 
-        }
-
-        .subtitle-row {
-            display: flex;
-            justify-content: center; 
-            align-items: center;
-            gap: 20px; 
-        }
-
-        .subtitle-row span:first-child {
-            font-family: 'Caveat', cursive; 
-            font-size: 26px;
-            color: #f0f0f0; 
-            text-shadow: 0 1px 5px rgba(0,0,0,0.4);
-        }
-
-        .subtitle-row span:last-child {
-            font-weight: 800;
-            font-size: 22px;
-            color: #ffffff; 
-            transform: rotate(-10deg);
-            text-shadow: 0 1px 5px rgba(0,0,0,0.4);
-        }
-
-        /* --- Main Content Section (GLOSSY WHITE-PURPLE 3D CLOUD) --- */
+        /* --- Main Content Section --- */
         .main-content {
             background-color: #fff; 
             background-image: 
@@ -193,11 +110,11 @@
             padding: 40px 50px 20px 50px; 
         }
 
-        .section-title {
-            font-style: italic;
-            color: #888;
-            font-size: 20px;
-            font-weight: 600;
+        /* --- NEW CSS: Section Header with Line (About Me) --- */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             margin-bottom: 30px;
             position: relative;
             z-index: 3;
@@ -205,91 +122,63 @@
             opacity: 0;
         }
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            position: relative;
-            z-index: 3; 
-            margin-bottom: 20px;
+        .section-tag {
+            font-style: italic;
+            color: #888;
+            font-size: 20px;
+            font-weight: 600;
+            white-space: nowrap;
         }
 
-        /* --- Left Column --- */
-        .left-col > div, .left-col > p, .left-col > ul {
-             /* Basic fade in for all left column content */
-             animation: fadeInUp 0.8s ease forwards 1s;
-             opacity: 0;
+        .section-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #8E24AA, transparent);
+            border-radius: 2px;
         }
 
-        .name-logo {
-            font-size: 38px;
-            font-weight: 800;
-            line-height: 1.1;
-            color: #232152;
-            margin-bottom: 5px;
-        }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; position: relative; z-index: 3; margin-bottom: 20px; }
+        .left-col > div, .left-col > p, .left-col > ul { animation: fadeInUp 0.8s ease forwards 1s; opacity: 0; }
 
-        .aka-text {
-            font-size: 12px;
-            font-weight: 700;
-            color: #555;
-            margin-bottom: 20px;
-        }
+        .name-logo { font-size: 38px; font-weight: 800; line-height: 1.1; color: #232152; margin-bottom: 5px; }
+        .aka-text { font-size: 12px; font-weight: 700; color: #555; margin-bottom: 20px; }
 
-        .bio-text {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #333;
+        /* --- NEW CSS: Bio Quote Card --- */
+        .bio-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 25px;
             margin-bottom: 30px;
-        }
-
-        .bio-text strong {
-            font-family: 'Caveat', cursive;
-            font-size: 26px;
-            font-weight: 700;
-        }
-
-        .sub-heading {
-            font-size: 24px;
-            font-weight: 700;
-            color: #111;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center; 
-        }
-
-        .sub-heading i {
-            color: #8E24AA; 
-            font-size: 22px;
-            margin-right: 10px;
-            /* Apply continuous pulsing animation */
-            animation: pulseGlow 2.5s infinite;
-        }
-
-        .education-text {
-            font-size: 13px;
-            color: #333;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        /* --- TIMELINE DESIGN FOR ROLES & AWARDS --- */
-        .timeline {
+            border: 1px solid rgba(142, 36, 170, 0.15);
+            box-shadow: 0 10px 30px rgba(142, 36, 170, 0.05);
             position: relative;
-            padding-left: 20px;
-            border-left: 2px solid #e0e0e0; 
-            margin-bottom: 30px;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 15px;
-            /* Staggered Slide-in Animation Setup */
-            opacity: 0;
-            animation: slideInLeft 0.5s ease forwards;
+        .bio-card:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(142, 36, 170, 0.1); }
+
+        .bio-card::before {
+            content: '"';
+            position: absolute;
+            top: -15px;
+            left: 10px;
+            font-size: 80px;
+            color: rgba(142, 36, 170, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
         }
 
-        /* Delay each timeline item to create a cascading effect */
+        .bio-text { font-size: 13px; line-height: 1.6; color: #333; position: relative; z-index: 1; }
+        .bio-text strong { font-family: 'Caveat', cursive; font-size: 26px; font-weight: 700; color: #8E24AA; }
+
+        .sub-heading { font-size: 24px; font-weight: 700; color: #111; margin-bottom: 15px; display: flex; align-items: center; }
+        .sub-heading i { color: #8E24AA; font-size: 22px; margin-right: 10px; animation: pulseGlow 2.5s infinite; }
+        .education-text { font-size: 13px; color: #333; margin-bottom: 30px; line-height: 1.5; }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 20px; border-left: 2px solid #e0e0e0; margin-bottom: 30px; }
+        .timeline-item { position: relative; margin-bottom: 15px; opacity: 0; animation: slideInLeft 0.5s ease forwards; }
         .timeline-item:nth-child(1) { animation-delay: 1.2s; }
         .timeline-item:nth-child(2) { animation-delay: 1.3s; }
         .timeline-item:nth-child(3) { animation-delay: 1.4s; }
@@ -297,117 +186,25 @@
         .timeline-item:nth-child(5) { animation-delay: 1.6s; }
         .timeline-item:nth-child(6) { animation-delay: 1.7s; }
         .timeline-item:nth-child(7) { animation-delay: 1.8s; }
+        .timeline-item::before { content: ''; position: absolute; left: -26px; top: 4px; width: 10px; height: 10px; background-color: #31A8FF; border-radius: 50%; box-shadow: 0 0 0 3px rgba(49, 168, 255, 0.2); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .timeline-item:hover::before { background-color: #8E24AA; box-shadow: 0 0 0 6px rgba(142, 36, 170, 0.3); transform: scale(1.2); }
+        .timeline-item:hover .timeline-text { color: #8E24AA; transform: translateX(5px); }
+        .timeline-text { font-size: 11.5px; color: #333; line-height: 1.4; transition: all 0.3s ease; }
+        .timeline-text strong { color: #232152; }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -26px; 
-            top: 4px;
-            width: 10px;
-            height: 10px;
-            background-color: #31A8FF; 
-            border-radius: 50%;
-            box-shadow: 0 0 0 3px rgba(49, 168, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
-        }
+        /* Right Column */
+        .right-col { animation: fadeInUp 0.8s ease forwards 1s; opacity: 0; }
+        .profile-img-container { width: 100%; display: flex; justify-content: center; margin-bottom: 30px; }
+        .profile-img { width: 280px; height: 280px; border-radius: 50%; object-fit: cover; background-image: url('photos/profile.jpg'); /* GITHUB PATH */ background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: all 0.5s ease; }
+        .profile-img:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 35px rgba(142, 36, 170, 0.2); }
 
-        /* Timeline Hover Effect */
-        .timeline-item:hover::before {
-            background-color: #8E24AA; 
-            box-shadow: 0 0 0 6px rgba(142, 36, 170, 0.3);
-            transform: scale(1.2);
-        }
-
-        .timeline-item:hover .timeline-text {
-            color: #8E24AA; /* Change text color slightly on hover */
-            transform: translateX(5px); /* Move text slightly right */
-        }
-
-        .timeline-text {
-            font-size: 11.5px;
-            color: #333;
-            line-height: 1.4;
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-text strong {
-            color: #232152;
-        }
-
-        /* --- Right Column --- */
-        .right-col {
-             animation: fadeInUp 0.8s ease forwards 1s;
-             opacity: 0;
-        }
-
-        .profile-img-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px; 
-        }
-
-        .profile-img {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            /* ডিজাইনের জন্য লোকাল গিটহাব ফাইল */
-            background-image: url('photos/profile.jpg'); 
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transition: all 0.5s ease;
-        }
-
-        /* Profile Image Hover Animation (Floating effect) */
-        .profile-img:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 35px rgba(142, 36, 170, 0.2);
-        }
-
-        .contact-info {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.8);
-            margin-top: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .contact-info:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-
-        .contact-info p {
-            font-size: 13px;
-            font-weight: 600;
-            color: #444;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info p:hover {
-            color: #31A8FF; /* Highlight contact text on hover */
-        }
-
-        .contact-info i {
-            font-size: 16px;
-            color: #31A8FF;
-            transition: transform 0.3s ease;
-        }
-        
-        .contact-info p:hover i {
-             transform: scale(1.2) rotate(5deg);
-        }
-
-        .contact-info p:last-child {
-            margin-bottom: 0;
-        }
+        .contact-info { background: rgba(255, 255, 255, 0.5); padding: 15px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.8); margin-top: 20px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .contact-info:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+        .contact-info p { font-size: 13px; font-weight: 600; color: #444; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; transition: color 0.3s ease; }
+        .contact-info p:hover { color: #31A8FF; }
+        .contact-info i { font-size: 16px; color: #31A8FF; transition: transform 0.3s ease; }
+        .contact-info p:hover i { transform: scale(1.2) rotate(5deg); }
+        .contact-info p:last-child { margin-bottom: 0; }
 
         /* --- FLOATING SOCIAL ICONS BAR --- */
         .social-bar-container {
@@ -417,7 +214,7 @@
             align-items: center;
             justify-content: center;
             padding-top: 20px;
-            border-top: 1px dashed rgba(0,0,0,0.1); 
+            border-top: 1px dashed rgba(0,0,0,0.05); 
             position: relative;
             z-index: 3;
             animation: fadeInUp 0.8s ease forwards 1.2s;
@@ -433,14 +230,22 @@
             letter-spacing: 1px;
             display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
 
-        .social-bar-title i {
-            margin-right: 8px;
-            color: #31A8FF;
+        /* NEW CSS: Lines for Social Title */
+        .social-bar-title::before,
+        .social-bar-title::after {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8E24AA);
+            opacity: 0.5;
         }
+        .social-bar-title::after { background: linear-gradient(90deg, #8E24AA, transparent); }
+        .social-bar-title i { margin-right: 8px; color: #31A8FF; }
 
-        /* ... (Glassmorphism button CSS) ... */
         .example-2 { display: flex; justify-content: center; align-items: center; list-style: none; padding: 0; margin: 0; gap: 20px; }
         .icon-content { position: relative; }
         .icon-content .tooltip { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); color: #fff; padding: 6px 10px; border-radius: 15px; opacity: 0; visibility: hidden; font-size: 12px; transition: all 0.3s ease; white-space: nowrap; z-index: 10; }
@@ -464,132 +269,160 @@
         .icon-content[data-social="handbook"] a { border-color: rgba(230, 81, 0, 0.3); }
         .icon-content[data-social="handbook"] a .filled, .icon-content[data-social="handbook"] .tooltip { background: linear-gradient(135deg, #4d1b00, #993600, #E65100, #331200); background-size: 400% 400%; animation: premiumGradient 6s ease infinite; border: 1px solid rgba(230, 81, 0, 0.6); }
 
+        /* --- FOOTER CREDIT CLASS --- */
+        .footer-credit {
+            margin-top: 15px;
+            font-size: 10px; /* Small size */
+            color: #a0aab2; /* Ash color */
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: 0.5px;
+            animation: fadeInUp 0.8s ease forwards 1.4s;
+            opacity: 0;
+        }
+        
         @media (max-width: 768px) {
             .content-grid { grid-template-columns: 1fr; gap: 30px; }
             .portfolio-title-box h1 { font-size: 40px; }
             .header-illustration { height: 300px; }
             .main-content { padding: 30px 25px 20px 25px; }
             .example-2 { gap: 15px; }
+            .footer-credit { font-size: 9px; margin-top: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="portfolio-card">
-        <div class="header-illustration">
-            <div class="portfolio-title-box">
-                <h1>Rakib Hasan<span>SHIPU</span></h1>
-                <div class="subtitle-row">
-                    <span>Scouter & Author</span>
-                    <span>2026</span>
+    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        
+        <div class="portfolio-card">
+            <div class="header-illustration">
+                <div class="portfolio-title-box">
+                    <h1>Rakib Hasan<span>SHIPU</span></h1>
+                    <div class="subtitle-row">
+                        <span>Scouter & Author</span>
+                        <span>2026</span>
+                    </div>
                 </div>
+            </div>
+
+            <div class="main-content">
+                
+                <div class="section-header">
+                    <div class="section-tag">About Me!</div>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="left-col">
+                        <div class="name-logo">
+                            RAKIB HASAN<br>SHIPU
+                        </div>
+                        <div class="aka-text">Bangladesh Scouts </div>
+                        
+                        <div class="bio-card">
+                            <p class="bio-text">
+                                <strong>Hi!</strong> I am Md. Rakib Hasan Shipu, a dedicated Scouter and author of the "Scout Handbook" (A to Z of Scouting). I'm passionate about youth empowerment, leadership, and serving Bangladesh Scouts through various national committees.
+                            </p>
+                        </div>
+
+                        <div class="sub-heading">
+                            <i class="fa-solid fa-graduation-cap"></i> Education
+                        </div>
+                        <p class="education-text">
+                            Honors & Masters, SUST.<br>
+                            HSC, Adamjee Cantonment College.<br>
+                            SSC, Rani Bilashmoni Govt. Boys' High School.
+                        </p>
+
+                        <div class="sub-heading">
+                            <i class="fa-solid fa-award"></i> Roles & Awards
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <p class="timeline-text"><strong>Woodbadger</strong> (Scout Section)</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-text"><strong>President's Award:</strong> Scout (2014) & Rover Scout (2020)</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-text"><strong>National Service Award</strong> & Number Two to the NSA</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-text"><strong>Social Development Award</strong> (Scout & Rover Section)</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-text"><strong>Joint Convener:</strong> Program Sub-committee, BD Scouts</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-text"><strong>Former Member:</strong> National Exec. & Adult Resources National Committee</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p class="timeline-text"><strong>Scout Leader:</strong> Rani Bilashmoni Mukto Scout Group, Gazipur</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="profile-img-container">
+                            <div class="profile-img"></div>
+                        </div>
+
+                        <div class="contact-info">
+                            <p><i class="fa-solid fa-location-dot"></i> Dhaka, Bangladesh</p>
+                            <p><i class="fa-regular fa-envelope"></i> prsrakib170@gmail.com</p>
+                            <p><i class="fa-solid fa-globe"></i> www.scout-world.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-bar-container">
+                    <div class="social-bar-title">
+                        <i class="fa-solid fa-link"></i> Connect With Me
+                    </div>
+                    
+                    <ul class="example-2">
+                        <li class="icon-content" data-social="facebook">
+                            <a aria-label="Facebook" href="https://www.facebook.com/PRSShipu" target="_blank">
+                                <div class="filled"></div>
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <div class="tooltip">Facebook</div>
+                        </li>
+                        
+                        <li class="icon-content" data-social="whatsapp">
+                            <a aria-label="WhatsApp" href="https://wa.me/message/D5KOPPDPXF63N1" target="_blank">
+                                <div class="filled"></div>
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+                            <div class="tooltip">WhatsApp</div>
+                        </li>
+                        
+                        <li class="icon-content" data-social="bdscouts">
+                            <a aria-label="BD Scouts" href="https://service.scouts.gov.bd/user-verify?scoutID=AB1234" target="_blank">
+                                <div class="filled"></div>
+                                <img src="https://i.postimg.cc/SsT54ZYf/20260211_201939.png" alt="BD Scouts Logo">
+                            </a>
+                            <div class="tooltip">BD Scouts</div>
+                        </li>
+                        
+                        <li class="icon-content" data-social="handbook">
+                            <a aria-label="Scout Handbook" href="https://www.scout-world.com/" target="_blank">
+                                <div class="filled"></div>
+                                <img src="https://i.postimg.cc/63jSKH40/20260211_202020.png" alt="Handbook Logo">
+                            </a>
+                            <div class="tooltip">Handbook</div>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
-
-        <div class="main-content">
-            <div class="section-title">About Me!</div>
-
-            <div class="content-grid">
-                <div class="left-col">
-                    <div class="name-logo">
-                        RAKIB HASAN<br>SHIPU
-                    </div>
-                    <div class="aka-text">Bangladesh Scouts </div>
-                    
-                    <p class="bio-text">
-                        <strong>Hi!</strong> I am Md. Rakib Hasan Shipu, a dedicated Scouter and author of the "Scout Handbook" (A to Z of Scouting). I'm passionate about youth empowerment, leadership, and serving Bangladesh Scouts through various national committees.
-                    </p>
-
-                    <div class="sub-heading">
-                        <i class="fa-solid fa-graduation-cap"></i> Education
-                    </div>
-                    <p class="education-text">
-                        Honors & Masters, SUST.<br>
-                        HSC, Adamjee Cantonment College.<br>
-                        SSC, Rani Bilashmoni Govt. Boys' High School.
-                    </p>
-
-                    <div class="sub-heading">
-                        <i class="fa-solid fa-award"></i> Roles & Awards
-                    </div>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <p class="timeline-text"><strong>Woodbadger</strong> (Scout Section)</p>
-                        </div>
-                        <div class="timeline-item">
-                            <p class="timeline-text"><strong>President's Award:</strong> Scout (2014) & Rover Scout (2020)</p>
-                        </div>
-                        <div class="timeline-item">
-                            <p class="timeline-text"><strong>National Service Award</strong> & Number Two to the NSA</p>
-                        </div>
-                        <div class="timeline-item">
-                            <p class="timeline-text"><strong>Social Development Award</strong> (Scout & Rover Section)</p>
-                        </div>
-                        <div class="timeline-item">
-                            <p class="timeline-text"><strong>Joint Convener:</strong> Program Sub-committee, BD Scouts</p>
-                        </div>
-                        <div class="timeline-item">
-                            <p class="timeline-text"><strong>Former Member:</strong> National Exec. & Adult Resources National Committee</p>
-                        </div>
-                        <div class="timeline-item">
-                            <p class="timeline-text"><strong>Scout Leader:</strong> Rani Bilashmoni Mukto Scout Group, Gazipur</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="right-col">
-                    <div class="profile-img-container">
-                        <div class="profile-img"></div>
-                    </div>
-
-                    <div class="contact-info">
-                        <p><i class="fa-solid fa-location-dot"></i> Dhaka, Bangladesh</p>
-                        <p><i class="fa-regular fa-envelope"></i> prsrakib170@gmail.com</p>
-                        <p><i class="fa-solid fa-globe"></i> www.scout-world.com</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="social-bar-container">
-                <div class="social-bar-title">
-                    <i class="fa-solid fa-link"></i> Connect With Me
-                </div>
-                <ul class="example-2">
-                    <li class="icon-content" data-social="facebook">
-                        <a aria-label="Facebook" href="https://www.facebook.com/PRSShipu" target="_blank">
-                            <div class="filled"></div>
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                        <div class="tooltip">Facebook</div>
-                    </li>
-                    
-                    <li class="icon-content" data-social="whatsapp">
-                        <a aria-label="WhatsApp" href="https://wa.me/message/D5KOPPDPXF63N1" target="_blank">
-                            <div class="filled"></div>
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </a>
-                        <div class="tooltip">WhatsApp</div>
-                    </li>
-                    
-                    <li class="icon-content" data-social="bdscouts">
-                        <a aria-label="BD Scouts" href="https://service.scouts.gov.bd/user-verify?scoutID=AB1234" target="_blank">
-                            <div class="filled"></div>
-                            <img src="https://i.postimg.cc/SsT54ZYf/20260211_201939.png" alt="BD Scouts Logo">
-                        </a>
-                        <div class="tooltip">BD Scouts</div>
-                    </li>
-                    
-                    <li class="icon-content" data-social="handbook">
-                        <a aria-label="Scout Handbook" href="https://www.scout-world.com/" target="_blank">
-                            <div class="filled"></div>
-                            <img src="https://i.postimg.cc/63jSKH40/20260211_202020.png" alt="Handbook Logo">
-                        </a>
-                        <div class="tooltip">Handbook</div>
-                    </li>
-                </ul>
-            </div>
-
+        
+        <div class="footer-credit">
+            Designed & Developed by [Tanvir Tasin]
         </div>
+
     </div>
 
 </body>
