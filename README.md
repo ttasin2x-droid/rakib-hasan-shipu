@@ -116,7 +116,6 @@ I am **Md. Rakib Hasan Shipu**, a dedicated Scouter and the proud author of **"S
 </div>
 
 ---
-
 ## 📂 Project Architecture
 
 ```bash
@@ -143,9 +142,10 @@ I am **Md. Rakib Hasan Shipu**, a dedicated Scouter and the proud author of **"S
 <div align="center">
 👨‍💻 Designed & Developed By
 <a href="https://ttasin2x-droid.github.io/Tanvir-Tasin-Portfolio-/" target="_blank">
-  <img src="https://img.shields.io/badge/Tanvir_Tasin-Developer-1a1a2e?style=for-the-badge&logo=github&logoColor=white&labelColor=8E24AA" alt="Developer Credit"/>
+<img src="https://img.shields.io/badge/Tanvir_Tasin-Developer-1a1a2e?style=for-the-badge&logo=github&logoColor=white&labelColor=8E24AA" alt="Developer Credit"/>
 </a>
 <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake.svg" alt="Snake Animation" width="100%"/>
-<br>
+
+
 ⭐ Star this repository if you find it helpful!
 </div>
