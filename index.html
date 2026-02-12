@@ -39,6 +39,88 @@
             transition: background-color 0.5s ease;
         }
 
+        /* --- PRELOADER CSS (NEW ADDED) --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f0f4f8; /* Matches body bg */
+            z-index: 9999; /* Always on top */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader {
+            width: 80px;
+            height: 50px;
+            position: relative;
+        }
+
+        .loader-text {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            margin: 0;
+            color: #8E24AA; /* Changed to site's Purple for visibility */
+            animation: text_713 3.5s ease both infinite;
+            font-size: .8rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .load {
+            background-color: #8E24AA; /* Site Purple */
+            border-radius: 50px;
+            display: block;
+            height: 16px;
+            width: 16px;
+            bottom: 0;
+            position: absolute;
+            transform: translateX(64px);
+            animation: loading_713 3.5s ease both infinite;
+        }
+
+        .load::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: #31A8FF; /* Site Blue */
+            border-radius: inherit;
+            animation: loading2_713 3.5s ease both infinite;
+        }
+
+        @keyframes text_713 {
+            0% { letter-spacing: 1px; transform: translateX(0px); }
+            40% { letter-spacing: 2px; transform: translateX(26px); }
+            80% { letter-spacing: 1px; transform: translateX(32px); }
+            90% { letter-spacing: 2px; transform: translateX(0px); }
+            100% { letter-spacing: 1px; transform: translateX(0px); }
+        }
+
+        @keyframes loading_713 {
+            0% { width: 16px; transform: translateX(0px); }
+            40% { width: 100%; transform: translateX(0px); }
+            80% { width: 16px; transform: translateX(64px); }
+            90% { width: 100%; transform: translateX(0px); }
+            100% { width: 16px; transform: translateX(0px); }
+        }
+
+        @keyframes loading2_713 {
+            0% { transform: translateX(0px); width: 16px; }
+            40% { transform: translateX(0%); width: 80%; }
+            80% { width: 100%; transform: translateX(0px); }
+            90% { width: 80%; transform: translateX(15px); }
+            100% { transform: translateX(0px); width: 16px; }
+        }
+        /* --- END PRELOADER CSS --- */
+
+
         /* --- KEYFRAMES FOR ANIMATIONS --- */
         
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
@@ -110,7 +192,7 @@
             padding: 40px 50px 20px 50px; 
         }
 
-        /* --- NEW CSS: Section Header with Line (About Me) --- */
+        /* --- Section Header with Line (About Me) --- */
         .section-header {
             display: flex;
             align-items: center;
@@ -143,7 +225,7 @@
         .name-logo { font-size: 38px; font-weight: 800; line-height: 1.1; color: #232152; margin-bottom: 5px; }
         .aka-text { font-size: 12px; font-weight: 700; color: #555; margin-bottom: 20px; }
 
-        /* --- NEW CSS: Bio Quote Card --- */
+        /* --- Bio Quote Card --- */
         .bio-card {
             background: rgba(255, 255, 255, 0.6);
             border-radius: 20px;
@@ -234,7 +316,7 @@
             gap: 15px;
         }
 
-        /* NEW CSS: Lines for Social Title */
+        /* Lines for Social Title */
         .social-bar-title::before,
         .social-bar-title::after {
             content: '';
@@ -272,8 +354,8 @@
         /* --- FOOTER CREDIT CLASS --- */
         .footer-credit {
             margin-top: 15px;
-            font-size: 10px; /* Small size */
-            color: #a0aab2; /* Ash color */
+            font-size: 10px; 
+            color: #a0aab2; 
             font-weight: 500;
             text-align: center;
             letter-spacing: 0.5px;
@@ -292,6 +374,13 @@
     </style>
 </head>
 <body>
+
+    <div id="preloader">
+        <div class="loader">
+            <span class="loader-text">loading</span>
+            <span class="load"></span>
+        </div>
+    </div>
 
     <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
         
@@ -424,6 +513,20 @@
         </div>
 
     </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            var loader = document.getElementById('preloader');
+            // Hide loader with fade out
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+            
+            // Remove it from DOM after transition
+            setTimeout(function(){
+                loader.style.display = 'none';
+            }, 500);
+        });
+    </script>
 
 </body>
 </html>
