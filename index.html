@@ -13,12 +13,6 @@
     <meta property="og:description" content="Dedicated Scouter and author of the 'Scout Handbook'. Explore my journey, roles, and awards in Bangladesh Scouts.">
     <meta property="og:image" content="https://i.postimg.cc/nVqCxtNR/hero-sec.jpg"> 
     
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.scout-world.com/">
-    <meta name="twitter:title" content="Rakib Hasan Shipu | Scouter & Author">
-    <meta name="twitter:description" content="Dedicated Scouter and author of the 'Scout Handbook'. Explore my journey, roles, and awards in Bangladesh Scouts.">
-    <meta name="twitter:image" content="https://i.postimg.cc/nVqCxtNR/hero-sec.jpg"> 
-    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -36,6 +30,12 @@
             justify-content: center;
             padding: 20px;
             transition: background-color 0.5s ease;
+            overflow: hidden; /* Prevent scrolling while loading */
+        }
+        
+        /* Allow scrolling when loaded */
+        body.loaded {
+            overflow: auto;
         }
 
         /* --- PRELOADER CSS --- */
@@ -69,6 +69,24 @@
         @keyframes pulseGlow { 0% { filter: drop-shadow(0 0 2px rgba(142, 36, 170, 0.4)); } 50% { filter: drop-shadow(0 0 8px rgba(142, 36, 170, 0.8)); transform: scale(1.05); } 100% { filter: drop-shadow(0 0 2px rgba(142, 36, 170, 0.4)); } }
         @keyframes bgZoom { from { background-size: 100% auto; } to { background-size: 110% auto; } }
 
+        /* --- INITIAL HIDDEN STATES (IMPORTANT) --- */
+        .portfolio-card, 
+        .section-header, 
+        .left-col > div, .left-col > p, .left-col > ul,
+        .right-col,
+        .video-container,
+        .social-bar-container,
+        .footer-credit,
+        .timeline-item {
+            opacity: 0; /* Initially hidden */
+        }
+        
+        .portfolio-title-box {
+            opacity: 0;
+        }
+
+        /* --- ANIMATIONS TRIGGERED ONLY WHEN 'loaded' CLASS IS ADDED --- */
+        
         .portfolio-card {
             background-color: #fff;
             width: 100%;
@@ -77,6 +95,9 @@
             box-shadow: 0 20px 50px rgba(100, 50, 150, 0.1);
             overflow: hidden;
             position: relative;
+        }
+        
+        body.loaded .portfolio-card {
             animation: fadeInUp 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
         }
 
@@ -101,8 +122,10 @@
             width: auto;
             z-index: 1;
             white-space: nowrap; 
+        }
+
+        body.loaded .portfolio-title-box {
             animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.5s;
-            opacity: 0;
         }
 
         .portfolio-title-box h1 { font-size: 60px; font-weight: 800; color: #ffffff; line-height: 1; margin-bottom: -8px; text-shadow: 0 2px 10px rgba(0,0,0,0.4); transition: text-shadow 0.3s ease; }
@@ -130,12 +153,18 @@
             padding: 40px 50px 20px 50px; 
         }
 
-        .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; position: relative; z-index: 3; animation: fadeInUp 0.8s ease forwards 0.8s; opacity: 0; }
+        .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; position: relative; z-index: 3; }
+        body.loaded .section-header { animation: fadeInUp 0.8s ease forwards 0.8s; }
+        
         .section-tag { font-style: italic; color: #888; font-size: 20px; font-weight: 600; white-space: nowrap; }
         .section-line { flex: 1; height: 2px; background: linear-gradient(90deg, #8E24AA, transparent); border-radius: 2px; }
 
         .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; position: relative; z-index: 3; margin-bottom: 20px; }
-        .left-col > div, .left-col > p, .left-col > ul { animation: fadeInUp 0.8s ease forwards 1s; opacity: 0; }
+        
+        /* Left Col Animations */
+        body.loaded .left-col > div, 
+        body.loaded .left-col > p, 
+        body.loaded .left-col > ul { animation: fadeInUp 0.8s ease forwards 1s; }
 
         .name-logo { font-size: 38px; font-weight: 800; line-height: 1.1; color: #232152; margin-bottom: 5px; }
         .aka-text { font-size: 12px; font-weight: 700; color: #555; margin-bottom: 20px; }
@@ -151,21 +180,25 @@
         .education-text { font-size: 13px; color: #333; margin-bottom: 30px; line-height: 1.5; }
 
         .timeline { position: relative; padding-left: 20px; border-left: 2px solid #e0e0e0; margin-bottom: 30px; }
-        .timeline-item { position: relative; margin-bottom: 15px; opacity: 0; animation: slideInLeft 0.5s ease forwards; }
-        .timeline-item:nth-child(1) { animation-delay: 1.2s; }
-        .timeline-item:nth-child(2) { animation-delay: 1.3s; }
-        .timeline-item:nth-child(3) { animation-delay: 1.4s; }
-        .timeline-item:nth-child(4) { animation-delay: 1.5s; }
-        .timeline-item:nth-child(5) { animation-delay: 1.6s; }
-        .timeline-item:nth-child(6) { animation-delay: 1.7s; }
-        .timeline-item:nth-child(7) { animation-delay: 1.8s; }
+        .timeline-item { position: relative; margin-bottom: 15px; }
+        
+        body.loaded .timeline-item { animation: slideInLeft 0.5s ease forwards; }
+        
+        body.loaded .timeline-item:nth-child(1) { animation-delay: 1.2s; }
+        body.loaded .timeline-item:nth-child(2) { animation-delay: 1.3s; }
+        body.loaded .timeline-item:nth-child(3) { animation-delay: 1.4s; }
+        body.loaded .timeline-item:nth-child(4) { animation-delay: 1.5s; }
+        body.loaded .timeline-item:nth-child(5) { animation-delay: 1.6s; }
+        body.loaded .timeline-item:nth-child(6) { animation-delay: 1.7s; }
+        body.loaded .timeline-item:nth-child(7) { animation-delay: 1.8s; }
+        
         .timeline-item::before { content: ''; position: absolute; left: -26px; top: 4px; width: 10px; height: 10px; background-color: #31A8FF; border-radius: 50%; box-shadow: 0 0 0 3px rgba(49, 168, 255, 0.2); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .timeline-item:hover::before { background-color: #8E24AA; box-shadow: 0 0 0 6px rgba(142, 36, 170, 0.3); transform: scale(1.2); }
         .timeline-item:hover .timeline-text { color: #8E24AA; transform: translateX(5px); }
         .timeline-text { font-size: 11.5px; color: #333; line-height: 1.4; transition: all 0.3s ease; }
         .timeline-text strong { color: #232152; }
 
-        .right-col { animation: fadeInUp 0.8s ease forwards 1s; opacity: 0; }
+        body.loaded .right-col { animation: fadeInUp 0.8s ease forwards 1s; }
 
         /* --- SLIDESHOW STYLES --- */
         .profile-img-container { width: 100%; display: flex; justify-content: center; margin-bottom: 30px; }
@@ -188,8 +221,10 @@
             margin-bottom: 40px;
             position: relative;
             z-index: 3;
+        }
+        
+        body.loaded .video-container {
             animation: fadeInUp 0.8s ease forwards 1.1s;
-            opacity: 0;
         }
         
         .video-wrapper {
@@ -208,7 +243,12 @@
         }
 
         /* --- SOCIAL BAR --- */
-        .social-bar-container { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 20px; border-top: 1px dashed rgba(0,0,0,0.05); position: relative; z-index: 3; animation: fadeInUp 0.8s ease forwards 1.2s; opacity: 0; }
+        .social-bar-container { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 20px; border-top: 1px dashed rgba(0,0,0,0.05); position: relative; z-index: 3; }
+        
+        body.loaded .social-bar-container {
+            animation: fadeInUp 0.8s ease forwards 1.2s;
+        }
+
         .social-bar-title { font-size: 14px; font-weight: 700; color: #888; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; gap: 15px; }
         .social-bar-title::before, .social-bar-title::after { content: ''; width: 40px; height: 2px; background: linear-gradient(90deg, transparent, #8E24AA); opacity: 0.5; }
         .social-bar-title::after { background: linear-gradient(90deg, #8E24AA, transparent); }
@@ -237,7 +277,8 @@
         .icon-content[data-social="handbook"] a { border-color: rgba(230, 81, 0, 0.3); }
         .icon-content[data-social="handbook"] a .filled, .icon-content[data-social="handbook"] .tooltip { background: linear-gradient(135deg, #4d1b00, #993600, #E65100, #331200); background-size: 400% 400%; animation: premiumGradient 6s ease infinite; border: 1px solid rgba(230, 81, 0, 0.6); }
 
-        .footer-credit { margin-top: 15px; font-size: 10px; color: #a0aab2; font-weight: 500; text-align: center; letter-spacing: 0.5px; animation: fadeInUp 0.8s ease forwards 1.4s; opacity: 0; }
+        .footer-credit { margin-top: 15px; font-size: 10px; color: #a0aab2; font-weight: 500; text-align: center; letter-spacing: 0.5px; opacity: 0; }
+        body.loaded .footer-credit { animation: fadeInUp 0.8s ease forwards 1.4s; }
         
         @media (max-width: 768px) {
             .content-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -408,14 +449,22 @@
     </div>
 
     <script>
-        // Loader Script
+        // Updated Loader Script
         window.addEventListener('load', function() {
             var loader = document.getElementById('preloader');
+            
+            // Step 1: Fade out the loader
             loader.style.opacity = '0';
             loader.style.visibility = 'hidden';
+
+            // Step 2: After loader fades out, trigger content animations
             setTimeout(function(){
                 loader.style.display = 'none';
-            }, 500);
+                
+                // Add the class 'loaded' to body to start animations
+                document.body.classList.add('loaded');
+                
+            }, 500); // Waits 500ms (matches CSS transition time)
         });
 
         // Slideshow Script
@@ -423,9 +472,11 @@
         let currentImageIndex = 0;
 
         function changeProfileImage() {
-            profileImages[currentImageIndex].classList.remove('active');
-            currentImageIndex = (currentImageIndex + 1) % profileImages.length;
-            profileImages[currentImageIndex].classList.add('active');
+            if (profileImages.length > 0) { // Safety check
+                profileImages[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % profileImages.length;
+                profileImages[currentImageIndex].classList.add('active');
+            }
         }
 
         if (profileImages.length > 1) {
